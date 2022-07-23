@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Application.Common.Interfaces
@@ -7,6 +8,6 @@ namespace Application.Common.Interfaces
     {
         DbSet<Domain.Marca.Entity.Marca> Marca { get; set; }
 
-        Task<int> SaveChangesAsync();
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

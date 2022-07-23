@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Application.Marca.Get
 {
-    public class GetMarca
+    public class GetMarca : Common.Interfaces.Actions.IGet<Domain.Marca.Entity.Marca>
     {
         private readonly IApiDbContext _contex;
 

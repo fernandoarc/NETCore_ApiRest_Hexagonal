@@ -1,9 +1,11 @@
 ﻿using Application.Common.Interfaces;
+using Application.Common.Interfaces.Actions;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Application.Marca.Create
 {
-    public class CreateMarca
+    public class CreateMarca : IAdd<Domain.Marca.Entity.Marca>
     {
         private readonly IApiDbContext _context;
 
@@ -12,11 +14,12 @@ namespace Application.Marca.Create
             _context = context;
         }
 
-        public async Task<Domain.Marca.Entity.Marca> Create(Domain.Marca.Entity.Marca marca)
+        public async Task<int> Add(Domain.Marca.Entity.Marca item, CancellationToken cancellationToken)
         {
-            _context.Marca.Add(marca);
-            await _context.SaveChangesAsync();
-            return marca;
+            _context.Marca.Add(item);
+            await _context.SaveChangesAsync(cancellationToken);
+            return item.IdBicicletaMarca;
         }
+
     }
 }

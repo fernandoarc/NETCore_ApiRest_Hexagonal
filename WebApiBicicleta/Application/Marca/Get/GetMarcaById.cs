@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Application.Marca.Get
 {
-    public class GetMarcaById
+    public class GetMarcaById : Common.Interfaces.Actions.IGetById<Domain.Marca.Entity.Marca>
     {
         private readonly IApiDbContext _context;
 
@@ -12,9 +12,9 @@ namespace Application.Marca.Get
             _context = context;
         }
 
-        public async Task<Domain.Marca.Entity.Marca> Get(int MarcaId)
+        public async Task<Domain.Marca.Entity.Marca> GetById(int id)
         {
-            return await _context.Marca.FindAsync(MarcaId);
+            return await _context.Marca.FindAsync(id);
         }
     }
 }
